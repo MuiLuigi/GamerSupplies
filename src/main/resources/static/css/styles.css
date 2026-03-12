@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #151e31, #172335);
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.navbar-brand {
+    letter-spacing: 0.5px;
+}

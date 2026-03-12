@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'GamerSupplies | ' + ${pageTitle}">GamerSupplies | About</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bg-light">
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<main class="py-5">
+    <section class="container">
+        <header class="mb-4 text-center">
+            <h1 class="fw-bold">About GamerSupplies</h1>
+            <p class="text-muted">
+                Learn more about the concept of the gaming retail platform.
+            </p>
+        </header>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <article class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h4">What We Do</h2>
+                        <p>
+                            GamerSupplies is designed as a gaming-focused e-commerce platform where users can
+                            browse gaming products in a clean and user-friendly environment.
+                        </p>
+                        <p>
+                            This project demonstrates a professional web layout using Spring Boot, Thymeleaf,
+                            and Bootstrap for responsive design.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-lg-6">
+                <article class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h2 class="h4">What Makes GamerSupplies Relevant</h2>
+                        <p>
+                            A gaming retail domain is a strong fit for web application development because it naturally supports
+                            product browsing, user interaction, and structured front-end pages.
+                        </p>
+                        <p>
+                            This project matches the GamerSupplies team plan for a gaming retail e-commerce experience.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-dark text-white py-3 mt-5">
+    <div class="container text-center">
+        <p class="mb-0">&copy; 2026 GamerSupplies | Star Mode Studios</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
