@@ -2,6 +2,9 @@ package com.starmodestudios.gamersupplies.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "products")
@@ -10,6 +13,11 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    // Auto-set on insert
+    @CreationTimestamp
+    @Column(name = "created", nullable = false, updatable = false)
+    private LocalDateTime created;
 
     @NotBlank(message = "Name is required")
     @Size(max = 100, message = "Name must be 100 characters or fewer")
@@ -42,12 +50,19 @@ public class Product {
     @Column(nullable = false, unique = true, length = 50)
     private String sku;
 
+    // Optional product image
+    @Column(name = "image_url")
+    private String imageUrl;
+
     // Constructors
     public Product() {}
 
     // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
+    public LocalDateTime getCreated() { return created; }
+    public void setCreated(LocalDateTime created) { this.created = created; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -66,4 +81,7 @@ public class Product {
 
     public String getSku() { return sku; }
     public void setSku(String sku) { this.sku = sku; }
+
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }
