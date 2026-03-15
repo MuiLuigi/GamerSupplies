@@ -34,11 +34,80 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <!-- Empty state -->
+        <div th:unless="${#lists.isEmpty(products)}" class="card shadow-sm border-0 mb-4 bg-light">
+            <div class="card-body">
+                <form th:action="@{/products}" method="get" class="row g-3 align-items-end">
+                    
+                    <!-- FILTER 1: Category -->
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold text-dark">Category</label>
+                        <select name="category" class="form-select">
+                            <option value="" th:selected="${selectedCategory == null || selectedCategory == ''}">All Categories</option>
+                            <option value="Consoles" th:selected="${selectedCategory == 'Consoles'}">Consoles</option>
+                            <option value="Accessories" th:selected="${selectedCategory == 'Accessories'}">Accessories</option>
+                            <option value="Games" th:selected="${selectedCategory == 'Games'}">Games</option>
+                        </select>
+                    </div>
+                    
+                    <!-- FILTER 2: Price Range -->
+                    <div class="col-md-2">
+                        <label class="form-label fw-bold text-dark">Max Price</label>
+                        <select name="maxPrice" class="form-select">
+                            <option value="" th:selected="${selectedMaxPrice == null}">Any Price</option>
+                            <option value="50" th:selected="${selectedMaxPrice == 50}">Under $50</option>
+                            <option value="100" th:selected="${selectedMaxPrice == 100}">Under $100</option>
+                            <option value="500" th:selected="${selectedMaxPrice == 500}">Under $500</option>
+                            <option value="1000" th:selected="${selectedMaxPrice == 1000}">Under $1000</option>
+                        </select>
+                    </div>
+                    
+                    <!-- SORT 1: Sort By -->
+                    <div class="col-md-2">
+                        <label class="form-label fw-bold text-dark">Sort By</label>
+                        <select name="sortBy" class="form-select">
+                            <option value="name" th:selected="${selectedSortBy == null || selectedSortBy == 'name'}">Name</option>
+                            <option value="price" th:selected="${selectedSortBy == 'price'}">Price</option>
+                            <option value="quantity" th:selected="${selectedSortBy == 'quantity'}">Quantity</option>
+                        </select>
+                    </div>
+                    
+                    <!-- SORT 2: Order -->
+                    <div class="col-md-2">
+                        <label class="form-label fw-bold text-dark">Order</label>
+                        <select name="sortOrder" class="form-select">
+                            <option value="asc" th:selected="${selectedSortOrder == null || selectedSortOrder == 'asc'}">Ascending ↑</option>
+                            <option value="desc" th:selected="${selectedSortOrder == 'desc'}">Descending ↓</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Apply Button -->
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">
+                            Apply
+                        </button>
+                    </div>
+                    
+                    <!-- Clear Button (only show if filters active) -->
+                    <div class="col-md-1" th:if="${selectedCategory != null || selectedMaxPrice != null}">
+                        <a th:href="@{/products}" class="btn btn-outline-secondary w-100">Clear</a>
+                    </div>
+                </form>
+                
+                <!-- Results count -->
+                <div class="mt-2 text-muted small" th:if="${productCount != null}">
+                    Showing <span th:text="${productCount}">0</span> products
+                    <span th:if="${selectedCategory != null && !selectedCategory.isEmpty()}"> in <strong th:text="${selectedCategory}">category</strong></span>
+                </div>
+            </div>
+        </div>
+
+               <!-- Empty state -->
         <div th:if="${#lists.isEmpty(products)}" class="card shadow-sm border-0 text-center py-5">
             <div class="card-body">
-                <p class="text-muted fs-5 mb-3">No products yet.</p>
-                <a th:href="@{/products/add}" class="btn btn-primary">Add Your First Product</a>
+                <p class="text-muted fs-5 mb-3" th:if="${selectedCategory == null && selectedMaxPrice == null}">No products yet.</p>
+                <p class="text-muted fs-5 mb-3" th:unless="${selectedCategory == null && selectedMaxPrice == null}">No products match your filters.</p>
+                <a th:href="@{/products/add}" class="btn btn-primary" th:if="${selectedCategory == null && selectedMaxPrice == null}">Add Your First Product</a>
+                <a th:href="@{/products}" class="btn btn-outline-secondary" th:unless="${selectedCategory == null && selectedMaxPrice == null}">Clear Filters</a>
             </div>
         </div>
 
