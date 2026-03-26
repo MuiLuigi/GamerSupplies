@@ -1,6 +1,10 @@
+com\starmodestudios\gamersupplies\controller\UserController.class
+com\starmodestudios\gamersupplies\service\UserService.class
 com\starmodestudios\gamersupplies\model\Product.class
 com\starmodestudios\gamersupplies\service\ProductService.class
 com\starmodestudios\gamersupplies\config\SecurityConfig.class
+com\starmodestudios\gamersupplies\repository\UserRepository.class
 com\starmodestudios\gamersupplies\repository\ProductRepository.class
 com\starmodestudios\gamersupplies\controller\ProductController.class
 com\starmodestudios\gamersupplies\GamerSuppliesApplication.class
+com\starmodestudios\gamersupplies\model\User.class

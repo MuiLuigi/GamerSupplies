@@ -79,3 +79,15 @@ SELECT 'Halo Infinite',
        'https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400',
        NOW()
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE sku = 'GAME-HI-001');
+
+INSERT INTO users (username, password, role, enabled)
+SELECT 'admin', '$2a$10$nshx8X.G6t52n.i0R8uNneH7OQx7aXjOfW5YQ2vK6L6tPzVl/mE7C', 'ROLE_ADMIN', true
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin');
+
+INSERT INTO users (username, password, role, enabled)
+SELECT 'staff', '$2a$10$nshx8X.G6t52n.i0R8uNneH7OQx7aXjOfW5YQ2vK6L6tPzVl/mE7C', 'ROLE_STAFF', true
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'staff');
+
+INSERT INTO users (username, password, role, enabled)
+SELECT 'customer', '$2a$10$nshx8X.G6t52n.i0R8uNneH7OQx7aXjOfW5YQ2vK6L6tPzVl/mE7C', 'ROLE_CUSTOMER', true
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'customer');
