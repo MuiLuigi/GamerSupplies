@@ -1,6 +1,10 @@
-C:\Users\Nicholas\Desktop\Winter 2026\CPAN-228\Git Repos\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\config\SecurityConfig.java
-C:\Users\Nicholas\Desktop\Winter 2026\CPAN-228\Git Repos\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\controller\ProductController.java
-C:\Users\Nicholas\Desktop\Winter 2026\CPAN-228\Git Repos\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\GamerSuppliesApplication.java
-C:\Users\Nicholas\Desktop\Winter 2026\CPAN-228\Git Repos\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\model\Product.java
-C:\Users\Nicholas\Desktop\Winter 2026\CPAN-228\Git Repos\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\repository\ProductRepository.java
-C:\Users\Nicholas\Desktop\Winter 2026\CPAN-228\Git Repos\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\service\ProductService.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\config\SecurityConfig.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\controller\ProductController.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\controller\UserController.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\GamerSuppliesApplication.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\model\Product.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\model\User.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\repository\ProductRepository.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\repository\UserRepository.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\service\ProductService.java
+E:\GamerSupplies\src\main\java\com\starmodestudios\gamersupplies\service\UserService.java

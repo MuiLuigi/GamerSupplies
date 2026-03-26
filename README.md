@@ -9,8 +9,13 @@ GamerSupplies is a comprehensive E-Commerce Platform dedicated to gaming retail.
 *   **Backend:** Java 17, Spring Boot 3.4.2
 *   **Database:** H2 (In-Memory Development) / PostgreSQL (Production ready)
 *   **Frontend:** Thymeleaf (with custom Glassmorphism UI)
-*   **Security:** Spring Security
+*   **Security:** Spring Security (BCrypt Password Encoding)
 *   **Build Tool:** Maven
+
+## Features
+*   **Product Management:** Track stock, prices, categories, and descriptions.
+*   **User Registration:** Secure `User` entity mapping with `UserDetails` integration.
+*   **Authentication Flow:** Encrypted `BCrypt` passwords via Spring Security with natively integrated login/registration loops.
 
 ## Team Members
 
@@ -43,6 +48,11 @@ Before running the application, ensure you have the following installed:
 
 3.  **Run the application (Development Mode):**
     The application defaults to an **H2 in-memory database**. This means you do not need to install or configure an external database server to test the application locally. Data will reset upon restart.
+    
+    The application automatically seeds data using `data.sql`. You can log in using any of the following pre-created accounts (Password for all is `password`):
+    - **admin** (`ROLE_ADMIN`)
+    - **staff** (`ROLE_STAFF`)
+    - **customer** (`ROLE_CUSTOMER`)
     
     If `spring-boot:run` fails in your environment, package and run the fat JAR directly:
     ```bash

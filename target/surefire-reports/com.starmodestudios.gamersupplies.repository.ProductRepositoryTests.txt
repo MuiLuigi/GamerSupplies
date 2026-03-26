@@ -1,4 +1,25 @@
 -------------------------------------------------------------------------------
 Test set: com.starmodestudios.gamersupplies.repository.ProductRepositoryTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.211 s -- in com.starmodestudios.gamersupplies.repository.ProductRepositoryTests
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.715 s <<< FAILURE! -- in com.starmodestudios.gamersupplies.repository.ProductRepositoryTests
+com.starmodestudios.gamersupplies.repository.ProductRepositoryTests.testFindAll -- Time elapsed: 0.329 s <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected size: 2 but was: 12 in:
+[com.starmodestudios.gamersupplies.model.Product@10330ade,
+    com.starmodestudios.gamersupplies.model.Product@f32397,
+    com.starmodestudios.gamersupplies.model.Product@59650483,
+    com.starmodestudios.gamersupplies.model.Product@7e4bd9b4,
+    com.starmodestudios.gamersupplies.model.Product@34518f0,
+    com.starmodestudios.gamersupplies.model.Product@1ab37c94,
+    com.starmodestudios.gamersupplies.model.Product@6b03325d,
+    com.starmodestudios.gamersupplies.model.Product@4ba5c0f0,
+    com.starmodestudios.gamersupplies.model.Product@608cd3ec,
+    com.starmodestudios.gamersupplies.model.Product@61da44b5,
+    com.starmodestudios.gamersupplies.model.Product@738db631,
+    com.starmodestudios.gamersupplies.model.Product@5ff6431a]
+	at com.starmodestudios.gamersupplies.repository.ProductRepositoryTests.testFindAll(ProductRepositoryTests.java:68)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

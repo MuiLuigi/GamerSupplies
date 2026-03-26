@@ -1,1 +1,9 @@
+com\starmodestudios\gamersupplies\model\ProductTests.class
+com\starmodestudios\gamersupplies\repository\ProductRepositoryTests.class
 com\starmodestudios\gamersupplies\GamerSuppliesApplicationTests.class
+com\starmodestudios\gamersupplies\service\ProductServiceTests.class
+com\starmodestudios\gamersupplies\controller\UserControllerTests.class
+com\starmodestudios\gamersupplies\repository\UserRepositoryTests.class
+com\starmodestudios\gamersupplies\service\UserServiceTests.class
+com\starmodestudios\gamersupplies\controller\ProductControllerTests.class
+com\starmodestudios\gamersupplies\model\UserTests.class
