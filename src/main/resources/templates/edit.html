@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'GamerSupplies | ' + ${pageTitle}">GamerSupplies | Edit Product</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<div th:replace="~{fragments/navigation :: navbar}"></div>
+
+<main class="py-5">
+    <section class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <!-- Page header -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h1 class="fw-bold mb-1" style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">
+                            Edit Product
+                        </h1>
+                        <p class="text-muted mb-0 fs-5 mt-2">Modify product details in the GamerSupplies system.</p>
+                    </div>
+                    <a th:href="@{/admin}" class="btn btn-outline-secondary">
+                        ← Back to Admin
+                    </a>
+                </div>
+
+                <!-- Success flash message (if any) -->
+                <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span th:text="${successMessage}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <!-- Edit Product Form -->
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+
+                        <form th:action="@{/admin/edit/{id}(id=${product.id})}"
+                              th:object="${product}"
+                              method="post"
+                              novalidate>
+
+                            <!-- Product Name -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label fw-bold text-dark">
+                                    Product Name <span class="text-danger">*</span>
+                                </label>
+                                <input type="text"
+                                       id="name"
+                                       th:field="*{name}"
+                                       th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'"
+                                       class="form-control"
+                                       placeholder="e.g. PlayStation 5 Controller"
+                                       maxlength="100">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                            </div>
+
+                            <!-- SKU -->
+                            <div class="mb-3">
+                                <label for="sku" class="form-label fw-bold text-dark">
+                                    SKU <span class="text-danger">*</span>
+                                </label>
+                                <input type="text"
+                                       id="sku"
+                                       th:field="*{sku}"
+                                       th:classappend="${#fields.hasErrors('sku')} ? 'is-invalid'"
+                                       class="form-control"
+                                       placeholder="e.g. CTRL-PS5-WHT"
+                                       maxlength="50">
+                                <div class="form-text text-muted">Unique product code used to identify this item.</div>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('sku')}" th:errors="*{sku}"></div>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="mb-3">
+                                <label for="category" class="form-label fw-bold text-dark">
+                                    Category <span class="text-danger">*</span>
+                                </label>
+                                <select id="category"
+                                        th:field="*{category}"
+                                        th:classappend="${#fields.hasErrors('category')} ? 'is-invalid'"
+                                        class="form-select">
+                                    <option value="">— Select a category —</option>
+                                    <option th:each="cat : ${categories}"
+                                            th:value="${cat}"
+                                            th:text="${cat}"></option>
+                                </select>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="mb-3">
+                                <label for="description" class="form-label fw-bold text-dark">
+                                    Description <span class="text-danger">*</span>
+                                </label>
+                                <textarea id="description"
+                                          th:field="*{description}"
+                                          th:classappend="${#fields.hasErrors('description')} ? 'is-invalid'"
+                                          class="form-control"
+                                          rows="3"
+                                          placeholder="Describe the product..."
+                                          maxlength="500"></textarea>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+                            </div>
+
+                            <!-- Price & Quantity -->
+                            <div class="row g-3 mb-4">
+                                <div class="col-sm-6">
+                                    <label for="price" class="form-label fw-bold text-dark">
+                                        Price ($) <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-transparent">$</span>
+                                        <input type="number"
+                                               id="price"
+                                               th:field="*{price}"
+                                               th:classappend="${#fields.hasErrors('price')} ? 'is-invalid'"
+                                               class="form-control"
+                                               placeholder="0.00"
+                                               step="0.01"
+                                               min="0.01"
+                                               max="9999.99">
+                                        <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="quantity" class="form-label fw-bold text-dark">
+                                        Quantity <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="number"
+                                           id="quantity"
+                                           th:field="*{quantity}"
+                                           th:classappend="${#fields.hasErrors('quantity')} ? 'is-invalid'"
+                                           class="form-control"
+                                           placeholder="0"
+                                           min="0"
+                                           max="9999">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></div>
+                                </div>
+                            </div>
+
+                            <!-- Form Actions -->
+                            <div class="d-flex gap-3 mt-5 pt-3 border-top">
+                                <button type="submit" class="btn btn-primary px-5 py-2 fs-5 w-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle me-2" viewBox="0 0 16 16">
+                                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                    </svg>
+                                    Update Product
+                                </button>
+                                <a th:href="@{/admin}" class="btn btn-outline-secondary px-5 py-2 fs-5 w-100">
+                                    Cancel
+                                </a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Required fields note -->
+                <p class="text-muted mt-3 small">
+                    <span class="text-danger">*</span> Required fields
+                </p>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="py-4 mt-auto">
+    <div class="container text-center">
+        <p class="mb-0 text-muted">&copy; 2026 GamerSupplies | Star Mode Studios</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
