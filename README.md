@@ -13,9 +13,13 @@ GamerSupplies is a comprehensive E-Commerce Platform dedicated to gaming retail.
 *   **Build Tool:** Maven
 
 ## Features
-*   **Product Management:** Track stock, prices, categories, and descriptions.
-*   **User Registration:** Secure `User` entity mapping with `UserDetails` integration.
-*   **Authentication Flow:** Encrypted `BCrypt` passwords via Spring Security with natively integrated login/registration loops.
+*   **Public Storefront:** Open access for guests to view the complete catalog of products and categories.
+*   **Product Management & Administration:**
+    *   **Staff Capabilities:** Authorized staff members (`ROLE_STAFF`) can add new products to the catalog.
+    *   **Admin Dashboard:** A dedicated management panel for administrators (`ROLE_ADMIN`) to view, securely edit, and permanently delete products.
+*   **Identity & Registration:** New users can sign up for an account. Credentials are automatically hashed and securely stored using `BCrypt`.
+*   **Role-Based Access Control (RBAC):** Fine-grained method-level and URL-level security enforcing strict role-gating (Admin, Staff, Customer).
+*   **Dynamic Authentication UI:** A responsive, polished Bootstrap 5 UI that seamlessly adapts the navigation bar and views based on the active user's role and session state.
 
 ## Team Members
 

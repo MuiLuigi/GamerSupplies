@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final UserService userService;
@@ -61,7 +63,7 @@ public class SecurityConfig {
                 .requestMatchers("/products/add").hasAnyRole("ADMIN", "STAFF")
 
                 // ── ADMIN only — full admin area ───────────────────────────────
-                .requestMatchers("/products/admin/**", "/products/edit/**", "/products/delete/**")
+                .requestMatchers("/admin/**", "/products/admin/**", "/products/edit/**", "/products/delete/**")
                     .hasRole("ADMIN")
 
                 // ── Everything else requires login ────────────────────────────
